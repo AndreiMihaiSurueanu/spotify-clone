@@ -13,6 +13,7 @@ const spotify = new SpotifyWebApi()
 
 function App() {
   const [{ user, token }, dispatch] = useStateProviderValue()
+  console.log('User 👱: ', user)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -32,13 +33,14 @@ function App() {
         })
       })
       spotify.getUserPlaylists().then((playlists) => {
+        console.log('Playlists before dispatch: ⏯️🎵', playlists)
         dispatch({
           type: 'SET_PLAYLISTS',
           playlists
         })
       })
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="App">
@@ -47,7 +49,6 @@ function App() {
           <Player spotify={spotify} /> :
           <Login />
       }
-
     </div>
   );
 }

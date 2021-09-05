@@ -12,28 +12,24 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic'
 import { useStateProviderValue } from '../../StateProvider'
 
 export default function Sidebar() {
-    const [{playlists}, dispatch] = useStateProviderValue()
-    
+    const [{ playlists }, dispatch] = useStateProviderValue()
+
+    console.log('Playlists: ⏯️🎵', playlists)
     return (
         <div className='sidebar'>
             <img
                 src={SPOTIFY_LOGO_IMAGE_URL}
                 alt="Spotify Logo"
                 className="sidebar_logo" />
-                <SidebarOption Icon={HomeIcon} title="Home"/>
-                <SidebarOption Icon={SearchIcon} title="Search"/>
-                <SidebarOption Icon={LibraryMusicIcon} title="Your Library"/>
-                <br />
-                <strong className="sidebar_title">PLAYLISTS</strong>
-                <hr />
-                {/* <div>{playlists}</div> */}
-                {/* <div>{playlists.items}</div> */}
-                {/* <div>{playlists.title}</div> */}
-                {/* <div>{playlists.name}</div> */}
-
-                {playlists?.items?.map(playlist => (
-                    <SidebarOption title={playlist.name}/>
-                ))}
+            <SidebarOption Icon={HomeIcon} title="Home" />
+            <SidebarOption Icon={SearchIcon} title="Search" />
+            <SidebarOption Icon={LibraryMusicIcon} title="Your Library" />
+            <br />
+            <strong className="sidebar_title">PLAYLISTS</strong>
+            <hr />
+            {playlists?.items?.map(playlist => (
+                <SidebarOption title={playlist.name} />
+            ))}
         </div>
     )
 }

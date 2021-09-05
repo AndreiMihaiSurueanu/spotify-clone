@@ -1,11 +1,11 @@
 import { createContext, useContext, useReducer } from "react"
 
-export const StateProviderContext = createContext()
+export const DataLayerContext = createContext()
 
 export const StateProvider = ({ initialState, reducer, children }) => (
-    <StateProviderContext.Provider value={useReducer(reducer, initialState)}>
+    <DataLayerContext.Provider value={useReducer(reducer, initialState)}>
         {children}
-    </StateProviderContext.Provider>
+    </DataLayerContext.Provider>
 )
 
-export const useStateProviderValue = () => useContext(StateProviderContext)
+export const useStateProviderValue = () => useContext(DataLayerContext)
